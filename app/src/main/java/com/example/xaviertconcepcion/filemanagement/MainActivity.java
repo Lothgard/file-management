@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 import android.os.storage.OnObbStateChangeListener;
 import android.os.storage.StorageManager;
 import android.support.v4.content.SharedPreferencesCompat;
@@ -36,11 +37,18 @@ public class MainActivity extends AppCompatActivity {
 
     private StorageManager mSM;
 
+
+    @BindView(R.id.lbl_mnt_status)
+    TextView lblMntStatus;
+
     @BindView(R.id.lbl_status)
     TextView lblStatus;
 
     @BindView(R.id.lbl_path)
     TextView lblPath;
+
+    @BindView(R.id.lbl_mount_time)
+    TextView lblMountTime;
 
     @BindView(R.id.btn_read_files)
     Button btnReadFiles;
@@ -92,6 +100,13 @@ public class MainActivity extends AppCompatActivity {
 
         btnReadFiles.setEnabled(false);
         btnReadDb.setEnabled(false);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkMntContents();
     }
 
     @Override
@@ -120,8 +135,33 @@ public class MainActivity extends AppCompatActivity {
                 mMountedObbPath = null;
                 clearMountedUrlFromPrefs();
             }
+
+            checkMntContents();
         }
     };
+
+    private void checkMntContents() {
+        String mntObbDirString = "/mnt/obb";
+        File mntObbDir = new File(mntObbDirString);
+
+        Log.d(TAG2, "mntObbDir: " + mntObbDir.getPath() );
+
+        if (mntObbDir.exists()) {
+            // show directory contents
+            String tree = "";
+            if (mntObbDir.listFiles().length > 0) {
+                for (File file : mntObbDir.listFiles()) {
+                    tree += file.getName() + "\n";
+                }
+            } else {
+                tree = "No files found.";
+            }
+
+            lblMntStatus.setText(tree);
+        } else {
+            lblMntStatus.setText("Mnt folder does not exist");
+        }
+    }
 
     // This method grabs its database from the assets folder
     // TODO: This shall be replaced by accessing the database from the OBB
@@ -177,6 +217,7 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_mount_obb)
     void mountClickListener() {
         Log.d(TAG2, "Mount clicked");
+        long startTime = System.currentTimeMillis();
         try {
             boolean mountStatus = mSM.mountObb(mObbPath, null, mEventListener);
             Log.d(TAG2, "Mount Click Status: " + mountStatus);
@@ -189,6 +230,8 @@ public class MainActivity extends AppCompatActivity {
             lblStatus.setText("OBB already mounted");
             Log.d(TAG2, "OBB already mounted");
         }
+        long elapsedTime = System.currentTimeMillis() - startTime;
+        lblMountTime.setText(String.format("Took: %d ms", elapsedTime));
     }
 
     @OnClick(R.id.btn_unmount_obb)
@@ -298,6 +341,5 @@ public class MainActivity extends AppCompatActivity {
         e.putString(C.MOUNTED_OBB_FILEPATH, "");
         e.apply();
     }
-
 
 }

@@ -9,56 +9,70 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lbl_mnt_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="Status here"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/lbl_path"
             android:layout_width="match_parent"
-            android:text="Path: "
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Path: " />
 
         <TextView
             android:id="@+id/lbl_status"
             android:layout_width="match_parent"
-            android:text="Status: "
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Status: " />
 
         <Button
             android:id="@+id/btn_mount_obb"
             android:layout_width="wrap_content"
-            android:text="Mount OBB"
+            android:layout_height="wrap_content"
+            android:text="Mount OBB" />
+        
+        <TextView
+            android:id="@+id/lbl_mount_time"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btn_unmount_obb"
             android:layout_width="wrap_content"
-            android:text="Unmount OBB"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Unmount OBB" />
 
         <Button
             android:id="@+id/btn_read_files"
-            android:text="Read Files from Mounted OBB"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Read Files from Mounted OBB" />
 
         <TextView
             android:id="@+id/lbl_filelist_row"
-            android:text="Files"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        
+            android:layout_height="wrap_content"
+            android:text="Files" />
+
         <Button
             android:id="@+id/btn_read_db"
             android:layout_width="wrap_content"
-            android:text="Read Db"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Read Db" />
 
         <TextView
             android:id="@+id/lbl_db_rows"
-            android:text="Db Rows"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Db Rows" />
 
     </LinearLayout>
 
