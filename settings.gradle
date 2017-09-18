@@ -1,0 +1,6 @@
+//def listRootDir = new File(settingsDir, '/')
+
+include ':app'
+
+//include ':library_plugin_project'
+//project (':library_plugin_project').projectDir = new File(listRootDir, 'library_plugin_project')

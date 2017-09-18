@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">File Management</string>
+    <string name="pr_rat_read_external">%s needs to a storage permission to download required files.</string>
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.xaviertconcepcion.filemanagement.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/lbl_path"
+            android:layout_width="match_parent"
+            android:text="Path: "
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/lbl_status"
+            android:layout_width="match_parent"
+            android:text="Status: "
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_mount_obb"
+            android:layout_width="wrap_content"
+            android:text="Mount OBB"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_unmount_obb"
+            android:layout_width="wrap_content"
+            android:text="Unmount OBB"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_read_files"
+            android:text="Read Files from Mounted OBB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/lbl_filelist_row"
+            android:text="Files"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        
+        <Button
+            android:id="@+id/btn_read_db"
+            android:layout_width="wrap_content"
+            android:text="Read Db"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/lbl_db_rows"
+            android:text="Db Rows"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</ScrollView>
